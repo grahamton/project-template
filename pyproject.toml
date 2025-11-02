@@ -3,10 +3,10 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "promptkit"
+name = "project-template"
 version = "0.0.1"
-description = "Prompt System Diagnostics Framework (explain-first; deterministic Iterate Cards)"
-authors = [{name = "PromptKit"}]
+description = "Generic project template repository"
+authors = [{name = "grahamton"}]
 requires-python = ">=3.9"
 readme = "README.md"
 
@@ -18,8 +18,7 @@ dependencies = [
 packages = ["promptkit"]
 package-dir = {"" = "src"}
 
-[project.scripts]
-promptkit = "promptkit.cli:app"
+# No default console scripts for the generic template
 
 [project.optional-dependencies]
 dev = [
