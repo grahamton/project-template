@@ -16,6 +16,7 @@ app = FastAPI(title="PromptKit – Diagnostics Web")
 
 templates = Jinja2Templates(directory="webapp/templates")
 app.mount("/static", StaticFiles(directory="webapp/static"), name="static")
+app.title = "Web App Template"
 
 
 @app.get("/", response_class=HTMLResponse)
