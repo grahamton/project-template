@@ -1,2 +1,1 @@
-"""PromptKit web app package (FastAPI + HTMX)."""
-
+"""Web app template package (FastAPI + HTMX)."""

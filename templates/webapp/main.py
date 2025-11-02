@@ -9,7 +9,7 @@ from fastapi.responses import HTMLResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from .services.promptkit_service import run_promptkit
+from .services.app_service import run_promptkit
 
 
 app = FastAPI(title="PromptKit – Diagnostics Web")
@@ -58,9 +58,9 @@ def index(request: Request, preset: Optional[str] = None) -> HTMLResponse:
     raw_flags = request.query_params.get("flags", "")
     qs_flags = {k.strip().lower() for k in raw_flags.split(",") if k.strip()}
     flags = {
-        "wizard": os.getenv("PK_UI_WIZARD", "0") in {"1", "true", "True"} or ("wizard" in qs_flags),
-        "compare": os.getenv("PK_UI_COMPARE", "0") in {"1", "true", "True"} or ("compare" in qs_flags),
-        "feedback": os.getenv("PK_UI_FEEDBACK", "0") in {"1", "true", "True"} or ("feedback" in qs_flags),
+        "wizard": os.getenv("APP_UI_WIZARD", "0") in {"1", "true", "True"} or ("wizard" in qs_flags),
+        "compare": os.getenv("APP_UI_COMPARE", "0") in {"1", "true", "True"} or ("compare" in qs_flags),
+        "feedback": os.getenv("APP_UI_FEEDBACK", "0") in {"1", "true", "True"} or ("feedback" in qs_flags),
     }
 
     # Canonical flags string for preserving in links
@@ -166,9 +166,9 @@ def run(
     raw_flags = request.query_params.get("flags", "")
     qs_flags = {k.strip().lower() for k in raw_flags.split(",") if k.strip()}
     flags = {
-        "wizard": os.getenv("PK_UI_WIZARD", "0") in {"1", "true", "True"} or ("wizard" in qs_flags),
-        "compare": os.getenv("PK_UI_COMPARE", "0") in {"1", "true", "True"} or ("compare" in qs_flags),
-        "feedback": os.getenv("PK_UI_FEEDBACK", "0") in {"1", "true", "True"} or ("feedback" in qs_flags),
+        "wizard": os.getenv("APP_UI_WIZARD", "0") in {"1", "true", "True"} or ("wizard" in qs_flags),
+        "compare": os.getenv("APP_UI_COMPARE", "0") in {"1", "true", "True"} or ("compare" in qs_flags),
+        "feedback": os.getenv("APP_UI_FEEDBACK", "0") in {"1", "true", "True"} or ("feedback" in qs_flags),
     }
 
     compare_payload = None
